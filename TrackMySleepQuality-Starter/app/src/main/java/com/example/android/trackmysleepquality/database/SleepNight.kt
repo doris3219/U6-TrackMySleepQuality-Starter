@@ -16,3 +16,25 @@
 
 package com.example.android.trackmysleepquality.database
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+//註釋數據類@Entity。命名表格daily_sleep_quality_table
+@Entity(tableName = "daily_sleep_quality_table")
+
+data class SleepNight(
+        //將nightId設為主鍵。將參數設置為autoGenerate，true以便Room為每個實體生成ID。這樣可以保證每個ID是唯一的
+        @PrimaryKey(autoGenerate = true)
+        var nightId: Long = 0L,
+
+        @ColumnInfo(name = "start_time_milli")
+        val startTimeMilli: Long = System.currentTimeMillis(),
+
+        @ColumnInfo(name = "end_time_milli")
+        var endTimeMilli: Long = startTimeMilli,        //初始化結束時間。將其設置為開始時間，以表示尚未記錄結束時間
+
+        @ColumnInfo(name = "quality_rating")
+        var sleepQuality: Int = -1          //初始化sleepQuanity將值設為-1，表示尚未收集到任何質量數據
+
+)

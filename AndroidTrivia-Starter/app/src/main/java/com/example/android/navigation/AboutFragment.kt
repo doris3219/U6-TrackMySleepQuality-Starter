@@ -16,6 +16,7 @@
 
 package com.example.android.navigation
 
+import android.app.Fragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
